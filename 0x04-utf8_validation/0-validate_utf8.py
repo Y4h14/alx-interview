@@ -21,10 +21,9 @@ def validUTF8(data: list) -> bool:
             elif (char >> 3) == 0b11110:
                 count = 3
             elif (char >> 7):
-                 return False
+                return False
         else:
             if (char >> 6) != 0b10:
                 return False
             count -= 1
         return count == 0
-        
