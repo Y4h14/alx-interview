@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """defines a fucntion that check if data is utf"""
 
 
