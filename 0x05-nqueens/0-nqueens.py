@@ -3,45 +3,50 @@
 import sys
 
 
-def solve_nqueens(n, row, step, result):
-    if row == n:
-        result.append(step[:])
-    else:
-        for i in range(n):
-            step.append(i)
-            # print(step)
-            if (isValid(step)):
-                solve_nqueens(n, row+1, step, result)
-            step.pop()
+def solve_nqueens(n):
+    def backtrack(row):
+        # check if we gone thro all rows
+        if row == n:
+            solutions.append([[c, r] for c, r in enumerate(board)])
+        else:
+            # add a possible solution then trackback if it's not valid
+            for col in range(n):
+                if is_vaild(row, col):
+                    board[row] = col
+                    backtrack(row + 1)
 
+    def is_vaild(row, col):
+        # check for in row, in col, or diagnal placement
+        for r in range(row):
+            if board[r] == col or \
+               board[r] - r == col - row or \
+               board[r] + r == col + row:
+                return False
+        return True
 
-def isValid(step):
-    """"""
-    curr_row: int = len(step) - 1
-    for i in range (curr_row):
-        diff = abs(step[i] - step[curr_row])
-        if diff == 0 or diff == curr_row - i:
-            return False
-    return True
+    board = [-1] * n
+    solutions = []
+    backtrack(0)
+    return solutions
 
 
 if __name__ == "__main__":
+    import sys
 
-
-    if len(sys.argv) > 2:
+    if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
 
-    N = int(sys.argv[1])
-
-    if not isinstance(N,int):
+    try:
+        N = int(sys.argv[1])
+    except ValueError:
         print("N must be a number")
         sys.exit(1)
 
     if N < 4:
         print("N must be at least 4")
         sys.exit(1)
-    
-    results = []
-    solve_nqueens(N, 0, [], results)
-    print(results)
+
+    solutions = solve_nqueens(N)
+    for solution in solutions:
+        print(solution)
