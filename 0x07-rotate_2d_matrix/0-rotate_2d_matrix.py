@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""defines a python function to reverse a 3D array"""
 
 
 def rotate_2d_matrix(matrix):
