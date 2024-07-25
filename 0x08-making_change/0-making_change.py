@@ -17,22 +17,14 @@ def makeChange(coins, total):
     if total == 0:
         return 0
 
-    coins.sort()
-    reversed_coins = list(reversed(coins))
+    coins.sort(reverse=True)
     count = 0
+    remaining_total = total
 
-    if coins[0] > total:
-        return -1
+    for coin in coins:
+        if coin <= remaining_total:
+            num_coins = remaining_total // coin
+            remaining_total -= num_coins * coin
+            count += num_coins
 
-    while total > 0 and coins[0] <= total:
-        # print(f"outer total {total}")
-        for coin in reversed_coins:
-            if coin <= total:
-                total = total - coin
-                # print(f"inner total {total}")
-                count += 1
-                break
-    if total == 0:
-        return count
-    else:
-        return -1
+    return count if remaining_total == 0 else -1
