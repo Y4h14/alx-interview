@@ -1,10 +1,18 @@
 #!/usr/bin/python3
+"""defines the makeChange function"""
 
 
 def makeChange(coins, total):
-    """Given a pile of coins of different values,
-    determine the fewest number of coins needed
-    to meet a given amount total"""
+    """determine the fewest number of coins needed to
+       meet a given total.
+
+    Args:
+        coins (List): a list of the values of the coins
+        total (integer): total to be met
+
+    Returns:
+        integer: number of coins used
+    """
 
     if total == 0:
         return 0
