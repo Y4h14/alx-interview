@@ -21,6 +21,9 @@ def makeChange(coins, total):
     reversed_coins = list(reversed(coins))
     count = 0
 
+    if coins[0] > total:
+        return -1
+
     while total > 0 and coins[0] <= total:
         # print(f"outer total {total}")
         for coin in reversed_coins:
