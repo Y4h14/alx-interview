@@ -14,7 +14,7 @@ def makeChange(coins, total):
         integer: number of coins used
     """
 
-    if total == 0:
+    if total <= 0:
         return 0
 
     coins.sort(reverse=True)
