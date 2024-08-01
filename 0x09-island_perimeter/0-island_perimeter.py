@@ -5,14 +5,14 @@
 def island_perimeter(grid):
     """island parameter"""
     total = 0
-    for i in range(0, len(grid)):
-        for j in range(0, len(grid[i])):
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
             if grid[i][j] == 1:
+                total += 4
 
-                if grid[i-1][j] == 1 or grid[i][j-1] == 1:
-                    total += 2
-                else:
-                    total += 4
-            else:
-                continue
+                if i > 0 and grid[i-1][j] == 1:
+                    total -= 2
+                if j > 0 and grid[i][j-1] == 1:
+                    total -= 2
+
     return total
