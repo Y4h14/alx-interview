@@ -1,13 +1,14 @@
 #!/usr/bin/python3
+"""define a function for solviing island perimieter"""
 
 
 def island_perimeter(grid):
-    
+    """island parameter"""
     total = 0
     for i in range(0, len(grid)):
-        for j in range (0, len(grid[i])):
+        for j in range(0, len(grid[i])):
             if grid[i][j] == 1:
-                
+
                 if grid[i-1][j] == 1 or grid[i][j-1] == 1:
                     total += 2
                 else:
