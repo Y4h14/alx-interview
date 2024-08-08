@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """defines a function that determines the winner"""
 
+
 def isWinner(x, num):
     """determine the winner based on the number of rounds"""
 
