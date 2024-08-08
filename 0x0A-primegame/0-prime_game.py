@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-
+"""defines a function that determines the winner"""
 
 def isWinner(x, num):
+    """determine the winner based on the number of rounds"""
 
     if not num or x <= 0:
         return None
